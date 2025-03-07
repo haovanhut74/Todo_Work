@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/baseline_add_task_24"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/nav_tasks"
+        android:icon="@drawable/baseline_calendar_month_24"
+        android:title="Calendar"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/baseline_account_box_24"
+        android:title="Profile"/>
+</menu>
