@@ -21,8 +21,8 @@ import java.util.Locale
 class TaskAdapter(
     context: Context,
     private val taskList: MutableList<TodoItem>,
-    private val onDeleteClick: (Int) -> Unit // Callback khi nhấn nút Xóa
-
+    private val onDeleteClick: (Int) -> Unit,
+    private val todoViewModel: TodoViewModel // Add ViewModel as a parameter
 ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private val sharedPreferences: SharedPreferences =
@@ -63,6 +63,9 @@ class TaskAdapter(
             sharedPreferences.edit().putBoolean(task.id, isChecked).apply() // Lưu trạng thái vào SharedPreferences
             holder.taskCheckBox.isEnabled = !isChecked // Vô hiệu hóa CheckBox nếu đã hoàn thành
             updateTextStyle(holder.taskName, isChecked) // Cập nhật kiểu chữ
+            if (isChecked) {
+                todoViewModel.incrementCheckedTodos() // Increment checked Todos
+            }
         }
 
         // Nếu là item cuối, thêm khoảng trống lớn

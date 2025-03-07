@@ -1,13 +1,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="16dp">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account"
-        android:textSize="24sp"
-        android:textColor="@color/black"/>
+        android:id="@+id/tvUncheckedTodos"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:background="@color/blue_light"
+        android:gravity="center"
+        android:text="No Complete: 0"
+        android:textColor="#212121"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tvCheckedTodos"
+        android:layout_width="35dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:background="#00BCD4"
+        android:gravity="center"
+        android:text="Complete: 0"
+        android:textColor="#283593"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+
 </LinearLayout>

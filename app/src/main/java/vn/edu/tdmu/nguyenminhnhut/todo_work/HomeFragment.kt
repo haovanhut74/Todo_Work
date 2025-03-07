@@ -46,10 +46,10 @@ class HomeFragment : Fragment() {
         view.requestFocus() // Yêu cầu focus cho view
         recyclerView.layoutManager = LinearLayoutManager(requireContext()) // Đặt layout manager cho RecyclerView
         recyclerView.setHasFixedSize(true) // Đặt cờ hasFixedSize cho RecyclerView
-        adapter = TaskAdapter(requireContext(), taskList) { position -> // Khởi tạo adapter
+        adapter = TaskAdapter(requireContext(), taskList, { position -> // Khởi tạo adapter
             val task = taskList[position]
             deleteTask(task.id, task.name) // Gọi hàm xóa task khi nhấn nút xóa
-        }
+        }, todoViewModel)
         recyclerView.adapter = adapter // Đặt adapter cho RecyclerView
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() { // Thêm listener cho sự kiện cuộn của RecyclerView
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -98,6 +98,7 @@ class HomeFragment : Fragment() {
         recyclerView.scrollToPosition(0) // Cuộn RecyclerView đến vị trí đầu tiên
 
         taskTime?.let { saveTaskToSharedPrefs(taskText, it) } // Lưu task vào SharedPreferences nếu có thời gian
+        todoViewModel.incrementTotalTodos()
     }
 
     @SuppressLint("MutatingSharedPrefs")
